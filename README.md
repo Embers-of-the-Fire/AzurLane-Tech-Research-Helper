@@ -5,7 +5,8 @@
   <strong>A tech-research helper using <a href="https://www.rust-lang.org/">RustLang</a> and <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
 
   <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/Embers-of-the-Fire/AzurLane-Tech-Research-Helper.svg" alt="Build Status" /></a>
+    <a href="https://github.com/rustwasm/wasm-pack-template"><img src="https://img.shields.io/badge/Template-wasm--pack--template-red"></a>
+    <a href="https://space.bilibili.com/526159315"><img src="https://img.shields.io/badge/Author-%E7%BB%9F%E5%90%88%E9%83%A825000mm%E8%A3%85%E7%94%B2%E9%99%84%E7%94%B2(526159315)-blue"></a>
   </p>
 
   <sub>Built with 🦀🕸</sub>

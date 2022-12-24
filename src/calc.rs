@@ -424,3 +424,24 @@ impl ResultPerDay {
         }
     }
 }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ResultPlan {
+    pub result_average: ResearchResult,
+    pub result: ResultPerDay,
+    pub projects: RefreshProjects
+}
+
+impl ResultPlan {
+    pub fn new() -> ResultPlan {
+        ResultPlan { result_average: ResearchResult::new(), result: ResultPerDay::new(), projects: RefreshProjects::new() }
+    }
+
+    pub fn build(result_average: ResearchResult, result: ResultPerDay, projects: RefreshProjects) -> ResultPlan {
+        let mut s = ResultPlan::new();
+        s.result_average = result_average;
+        s.result = result;
+        s.projects = projects;
+        s
+    }
+}
