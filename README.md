@@ -5,8 +5,9 @@
   <strong>A tech-research helper using <a href="https://www.rust-lang.org/">RustLang</a> and <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
 
   <p>
-    <a href="https://github.com/rustwasm/wasm-pack-template"><img src="https://img.shields.io/badge/Template-wasm--pack--template-red"></a>
-    <a href="https://space.bilibili.com/526159315"><img src="https://img.shields.io/badge/Author-%E7%BB%9F%E5%90%88%E9%83%A825000mm%E8%A3%85%E7%94%B2%E9%99%84%E7%94%B2(526159315)-blue"></a>
+    <a href="https://space.bilibili.com/526159315"><img src="https://img.shields.io/badge/Author-%E7%BB%9F%E5%90%88%E9%83%A825000mm%E8%A3%85%E7%94%B2%E9%99%84%E7%94%B2(526159315)-blue"></a><br>
+    <a href="https://www.npmjs.com/package/azurlane-tech-research"><img src="https://img.shields.io/badge/NPM-azurlane--tech--research-orange"></img></a>
+    <a href="https://crates.io/crates/syn"><img src="https://img.shields.io/badge/Crates.IO-azurlane--tech--research-yellow"></a>
   </p>
 
   <sub>Built with 🦀🕸</sub>
@@ -56,7 +57,11 @@ GitHub Page原生构建，通常情况下不会出现问题。
 
 #### 使用NPM（WASM）
 
-> 等待上传
+[Azurlane Tech Research &lt;TS&gt;](https://www.npmjs.com/package/azurlane-tech-research)
+
+```bash
+npm i azurlane-tech-research
+```
 
 #### 使用rust-Cargo（标准crate，提供全部可提供API）
 
