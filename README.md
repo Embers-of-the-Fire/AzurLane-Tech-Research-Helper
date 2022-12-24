@@ -5,7 +5,7 @@
   <strong>A tech-research helper using <a href="https://www.rust-lang.org/">RustLang</a> and <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
 
   <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg" alt="Build Status" /></a>
+    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/Embers-of-the-Fire/AzurLane-Tech-Research-Helper.svg" alt="Build Status" /></a>
   </p>
 
   <sub>Built with 🦀🕸</sub>
@@ -36,24 +36,34 @@ GitHub Page原生构建，通常情况下不会出现问题。
 
 开发中
 
-### 复用及二次开发
+## 复用及二次开发
 
-#### 应用程序扩展（C-FFI)
+### 应用程序扩展（C-FFI)
 
 在`release`中我提供了`.dll`形式的符合C-FFI的接口，相关内容在release包和`CFFI`分支的`rust.h`中。
 
-#### 复用WASM
+### 复用WASM
 
 在`release`中我同样提供了`.wasm`的文件。由于`wasm-bindgen`对于wasm与rust交互复杂结构体仅有`JsValue`形式，无法提供类型注释，因此我在`master`分支中和release包中提供了`rust.ts`，其中仅标注了数据类型。
 
-#### 源代码
+### 源代码
 
 该项目使用`wasm-pack`脚手架，其中所有导入导出定义及源代码形式符合`wasm-pack`默认形式。
 > 注意：为了纯隔离式运行，科研项目相关数据直接以硬代码形式写入于`dataset::Data::load()`(`src/dataset.rs`)函数中。
 
+### 其他
+
+#### 使用NPM（WASM）
+
+> 等待上传
+
+#### 使用rust-Cargo（标准crate，提供全部可提供API）
+
+> 等待上传
+
 ## 许可
 
-Licensed under MIT license ([LICENSE](LICENSE) or http://opensource.org/licenses/MIT)
+Licensed under MIT license ([LICENSE](LICENSE) or [MIT-opensource](http://opensource.org/licenses/MIT))
 
 ## 致谢
 
