@@ -7,7 +7,7 @@
   <p>
     <a href="https://space.bilibili.com/526159315"><img src="https://img.shields.io/badge/Author-%E7%BB%9F%E5%90%88%E9%83%A825000mm%E8%A3%85%E7%94%B2%E9%99%84%E7%94%B2(526159315)-blue"></a><br>
     <a href="https://www.npmjs.com/package/azurlane-tech-research"><img src="https://img.shields.io/badge/NPM-azurlane--tech--research-orange"></img></a>
-    <a href="https://crates.io/crates/syn"><img src="https://img.shields.io/badge/Crates.IO-azurlane--tech--research-yellow"></a>
+    <a href="https://crates.io/crates/azurlane_tech_research"><img src="https://img.shields.io/badge/Crates.IO-azurlane--tech--research-yellow"></a>
   </p>
 
   <sub>Built with 🦀🕸</sub>
