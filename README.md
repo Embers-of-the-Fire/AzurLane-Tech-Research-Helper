@@ -28,9 +28,8 @@
 BWiki由于MediaWiki系统的限制可能部分展示会出现一定的问题。
 
 GitHub Page原生构建，通常情况下不会出现问题。
-> 但是我还没搞，先摸了
 
-[github-page-res]: https://embers-of-the-fire.github.io/azurlane/
+[github-page-res]: https://embers-of-the-fire.github.io/techresearch/techresearch.html
 [azurlane-bwiki-res]: https://wiki.biligame.com/blhx/科研策略专题攻略
 [azurlane-bwiki]: https://wiki.biligame.com/blhx/
 
@@ -68,7 +67,6 @@ npm i azurlane-tech-research
 [azurlane_tech_research v0.1.0](https://crates.io/crates/azurlane_tech_research)
 
 <sup>Add the following line to your Cargo.toml file:</sup>
-
 ```toml
 azurlane_tech_research = "0.1.0"
 ```
