@@ -80,7 +80,7 @@ export function submit() {
         if (lim == 50) alert("迭代次数超过预设次数50次，直接保留最后一次结果，请尝试修改迭代初始值，或将最后一次结果的参考值作为初始值以继续迭代");
     };
     // alert(resplan.result.cost_performance)
-    let table_resproject = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.tech-table-surrounder.col-12.col-xl-4.overflow-auto > table > tbody");
+    let table_resproject = document.querySelector("body > div.form.row > div.result-surrounder > div.tech-table-surrounder > table > tbody");
     table_resproject.innerHTML = '';
     let pl = resplan.projects.data;
     let nameid, name;
@@ -123,11 +123,11 @@ export function convert_result_table() {
 }
 
 function convert_result_table_to_ave() {
-    let res_table = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.result-table-surrounder.col-12.col-xl-4 > table > tbody");
+    let res_table = document.querySelector("body > div.form.row > div.result-surrounder > div.result-table-surrounder > table > tbody");
     res_table.innerHTML = '';
     let res = resplan.result_average;
     let refresh = resplan.projects;
-    let title = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.result-table-surrounder.col-12.col-xl-4 > h5 > a")
+    let title = document.querySelector("body > div.form.row > div.result-surrounder > div.result-table-surrounder > h5 > a")
     title.innerHTML = "平均科研产出&nbsp;&nbsp;";
     res_table.appendChild(fill_table('物资消耗', fetch_doubloon(res.doubloon)));
     res_table.appendChild(fill_table('魔方消耗', res.cube.toFixed(2)));
@@ -141,10 +141,10 @@ function convert_result_table_to_ave() {
 }
 
 function convert_result_table_to_daily() {
-    let res_table = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.result-table-surrounder.col-12.col-xl-4 > table > tbody");
+    let res_table = document.querySelector("body > div.form.row > div.result-surrounder > div.result-table-surrounder > table > tbody");
     let res = resplan.result;
     res_table.innerHTML = '';
-    let title = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.result-table-surrounder.col-12.col-xl-4 > h5 > a")
+    let title = document.querySelector("body > div.form.row > div.result-surrounder > div.result-table-surrounder > h5 > a")
     title.innerHTML = "每日科研产出&nbsp;&nbsp;";
     res_table.appendChild(fill_table('物资消耗', fetch_doubloon(res.doubloon)));
     res_table.appendChild(fill_table('魔方消耗', res.cube.toFixed(2)));
@@ -180,10 +180,10 @@ export function convert_predict_table() {
 }
 
 function predict_situation_0() {
-    let predict_table = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.predict-table-surrounder.col-12.col-xl-4 > table > tbody");
+    let predict_table = document.querySelector("body > div.form.row > div.result-surrounder > div.predict-table-surrounder > table > tbody");
     predict_table.innerHTML = '';
     let res = resplan.result;
-    let title = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.predict-table-surrounder.col-12.col-xl-4 > h5 > a");
+    let title = document.querySelector("body > div.form.row > div.result-surrounder > div.predict-table-surrounder > h5 > a");
     title.innerHTML = "全年产出&nbsp;&nbsp;";
     predict_table.appendChild(fill_table('物资消耗', fetch_doubloon(res.doubloon * 365)));
     predict_table.appendChild(fill_table('魔方消耗', (res.cube * 365).toFixed(2)));
@@ -195,10 +195,10 @@ function predict_situation_0() {
 }
 
 function predict_situation_1() {
-    let predict_table = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.predict-table-surrounder.col-12.col-xl-4 > table > tbody");
+    let predict_table = document.querySelector("body > div.form.row > div.result-surrounder > div.predict-table-surrounder > table > tbody");
     predict_table.innerHTML = '';
     let res = resplan.result;
-    let title = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.predict-table-surrounder.col-12.col-xl-4 > h5 > a");
+    let title = document.querySelector("body > div.form.row > div.result-surrounder > div.predict-table-surrounder > h5 > a");
     title.innerHTML = "科研船从零满破&nbsp;&nbsp;";
     let ssr_time = 343 * 3;
     if (restriction.fni_5_super_r === 3) ssr_time = 0;
@@ -216,10 +216,10 @@ function predict_situation_1() {
 }
 
 function predict_situation_2() {
-    let predict_table = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.predict-table-surrounder.col-12.col-xl-4 > table > tbody");
+    let predict_table = document.querySelector("body > div.form.row > div.result-surrounder > div.predict-table-surrounder > table > tbody");
     predict_table.innerHTML = '';
     let res = resplan.result;
-    let title = document.querySelector("body > div.form.row.col-12.pb-5 > div.result-surrounder.col-12.col-md-12.col-xl-7.row > div.predict-table-surrounder.col-12.col-xl-4 > h5 > a");
+    let title = document.querySelector("body > div.form.row > div.result-surrounder > div.predict-table-surrounder > h5 > a");
     title.innerHTML = "直到六期开始&nbsp;&nbsp;";
     let ftime = (END_DATE - new Date()) / 1000 / 3600 / 24;
     predict_table.appendChild(fill_table('物资消耗', fetch_doubloon(res.doubloon * ftime)));
