@@ -30,8 +30,36 @@ pub extern "C" fn build_reference_value(doubloon: f64, cube: f64, time_of_an_hou
 
 
 #[no_mangle]
-pub extern "C" fn calc(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: f64, limit: i8) -> ResultPlanRepV {
-    let res = build(rest, raw_ref, &refer_v, limit);
+pub extern "C" fn calc(rest: Restriction, raw_ref: ReferenceValue, refer_v: f64, limit: i8) -> ResultPlanRepV {
+    let mut rest = rest.clone();
+    let mut raw_ref = raw_ref.clone();
+    let res = build(&mut rest, &mut raw_ref, &refer_v, limit);
+    ResultPlanRepV::from(res)
+}
+
+#[no_mangle]
+pub extern "C" fn calc_auto(rest: Restriction, raw_ref: ReferenceValue, refer_v: f64, limit: i8) -> ResultPlanRepV {
+    let mut rest = rest.clone();
+    let mut raw_ref = raw_ref.clone();
+    let mut res: ResultPlan;
+    let mut f2 = 0.0;
+    let mut f1 = 0.0;
+    let mut fthis: f64;
+    let mut times: i16 = 0;
+    loop {
+        res = build(&mut rest, &mut raw_ref, &refer_v, limit);
+        fthis = res.result.cost_performance;
+        if fthis - f1 <= 0.00001 {break}
+        else if fthis - f2 <= 0.00001 {
+            if fthis >= f1 {break}
+            res = build(&mut rest, &mut raw_ref, &refer_v, limit);
+            break;
+        }
+        f2 = f1;
+        f1 = fthis;
+        times += 1;
+        if times >= 100 {break};
+    };
     ResultPlanRepV::from(res)
 }
 

@@ -101,7 +101,12 @@ struct ReferenceValue build_reference_value(double doubloon,
                                             double cong_chips,
                                             double time_ratio);
 
-struct ResultPlanRepV calc(struct Restriction *rest,
-                           struct ReferenceValue *raw_ref,
+struct ResultPlanRepV calc(struct Restriction rest,
+                           struct ReferenceValue raw_ref,
                            double refer_v,
                            int8_t limit);
+
+struct ResultPlanRepV calc_auto(struct Restriction rest,
+                                struct ReferenceValue raw_ref,
+                                double refer_v,
+                                int8_t limit);
