@@ -21,7 +21,7 @@
 
 > 快速连接：  
 > [科研策略专题攻略-BWiki][azurlane-bwiki-res]  
-> [GitHub Page（还没做）][github-page-res]
+> [GitHub Page][github-page-res]
 
 使用**WebAssembly**构建的在线科研规划服务，基本囊括了科研规划的主要功能。
 

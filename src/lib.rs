@@ -30,12 +30,40 @@ pub fn build_reference_value(doubloon: f64, cube: f64, time_of_an_hour: f64, sup
 }
 
 
-pub fn calc(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: f64, limit: i8) -> ResultPlan {
-    build(rest, raw_ref, &refer_v, limit)
+pub fn calc(rest: Restriction, raw_ref: ReferenceValue, refer_v: f64, limit: i8) -> ResultPlan {
+    let mut rest = rest.clone();
+    let mut raw_ref = raw_ref.clone();
+    let resp = build(&mut rest, &mut raw_ref, &refer_v, limit);
+    resp
+
+}
+
+pub fn calc_auto(rest: Restriction, raw_ref: ReferenceValue, refer_v: f64, limit: i8) -> ResultPlan {
+    let mut rest = rest.clone();
+    let mut raw_ref = raw_ref.clone();
+    let mut resp: ResultPlan;
+    let mut f2 = 0.0;
+    let mut f1 = 0.0;
+    let mut fthis: f64;
+    let mut times: i16 = 0;
+    loop {
+        resp = build(&mut rest, &mut raw_ref, &refer_v, limit);
+        fthis = resp.result.cost_performance;
+        if fthis - f1 <= 0.00001 {break}
+        else if fthis - f2 <= 0.00001 {
+            if fthis >= f1 {break}
+            resp = build(&mut rest, &mut raw_ref, &refer_v, limit);
+            break;
+        }
+        f2 = f1;
+        f1 = fthis;
+        times += 1;
+        if times >= 100 {break};
+    }
+    resp
 }
 
 fn build(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: &f64, limit: i8) -> ResultPlan {
-    // 现在数据终于都他妈对了
     let mut db = Data::load();
     raw_ref.actual(&rest);
     let r = ActualRatio::from(&rest);
@@ -50,14 +78,21 @@ fn build(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: &f64, li
     rp.generate();
     rp.generate_refresh_perf();
     let res = rp.get_result();
-    ResultPlan::build(res, ResultPerDay::from(&res), rp)
+    let fnres = ResultPerDay::from(&res);
+    let resp = ResultPlan::build(res, fnres, rp);
+    // return serde_wasm_bindgen::to_value(&(resp)).unwrap();
+    return resp;
 }
+
 
 #[test]
 fn test() {
-    let mut rest = predef_restriction();
-    let mut rfv = predef_reference_value();
-    let r = calc(&mut rest, &mut rfv, 156.515819396912, 10);
+    let rest = predef_restriction();
+    let rfv = predef_reference_value();
+    let r = calc(rest, rfv, 156.515819396912, 10);
+    // assert_eq!(1 + 1, 2);
+    assert!(r.result.cost_performance - 156.515819396912 <= 0.00001);
+    let r = calc_auto(rest, rfv, 100.0, 10);
     // assert_eq!(1 + 1, 2);
     assert!(r.result.cost_performance - 156.515819396912 <= 0.00001);
 }
