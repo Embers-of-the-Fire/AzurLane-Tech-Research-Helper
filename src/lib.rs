@@ -53,10 +53,39 @@ pub fn calc(rest: JsValue, raw_ref: JsValue, refer_v: f64, limit: i8) -> JsValue
     let mut raw_ref = serde_wasm_bindgen::from_value::<ReferenceValue>(raw_ref).unwrap();
     // let mut rest = Restriction::predef();
     // let mut raw_ref = ReferenceValue::predef();
-    build(&mut rest, &mut raw_ref, &refer_v, limit)
+    let resp = build(&mut rest, &mut raw_ref, &refer_v, limit);
+    return serde_wasm_bindgen::to_value(&(resp)).unwrap();
+
 }
 
-fn build(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: &f64, limit: i8) -> JsValue {
+#[wasm_bindgen]
+pub fn calc_auto(rest: JsValue, raw_ref: JsValue, refer_v: f64, limit: i8) -> JsValue {
+    utils::set_panic_hook();
+    let mut rest = serde_wasm_bindgen::from_value::<Restriction>(rest).unwrap();
+    let mut raw_ref = serde_wasm_bindgen::from_value::<ReferenceValue>(raw_ref).unwrap();
+    let mut resp: ResultPlan;
+    let mut f2 = 0.0;
+    let mut f1 = 0.0;
+    let mut fthis: f64;
+    let mut times: i16 = 0;
+    loop {
+        resp = build(&mut rest, &mut raw_ref, &refer_v, limit);
+        fthis = resp.result.cost_performance;
+        if fthis - f1 <= 0.00001 {break}
+        else if fthis - f2 <= 0.00001 {
+            if fthis >= f1 {break}
+            resp = build(&mut rest, &mut raw_ref, &refer_v, limit);
+            break;
+        }
+        f2 = f1;
+        f1 = fthis;
+        times += 1;
+        if times >= 100 {break};
+    }
+    serde_wasm_bindgen::to_value(&resp).unwrap()
+}
+
+fn build(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: &f64, limit: i8) -> ResultPlan {
     utils::set_panic_hook();
     // 现在数据终于都他妈对了
     let mut db = Data::load();
@@ -75,5 +104,6 @@ fn build(rest: &mut Restriction, raw_ref: &mut ReferenceValue, refer_v: &f64, li
     let res = rp.get_result();
     let fnres = ResultPerDay::from(&res);
     let resp = ResultPlan::build(res, fnres, rp);
-    return serde_wasm_bindgen::to_value(&(resp)).unwrap();
+    // return serde_wasm_bindgen::to_value(&(resp)).unwrap();
+    return resp;
 }
