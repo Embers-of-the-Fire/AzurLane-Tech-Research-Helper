@@ -1,0 +1,32 @@
+body {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding-left: 6.66%;
+    padding-right: 6.66%;
+}
+
+div.title {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+label {
+    float: left;
+    font-size: larger;
+}
+
+.fsur {
+    padding: 0px;
+    margin: 0px;
+}
