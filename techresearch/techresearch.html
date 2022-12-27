@@ -11,25 +11,25 @@
     <title>Document</title>
 </head>
 <script type="module">
-    import { submit, convert_result_table, convert_predict_table } from './techresearch.js';
+    import { submit, convert_result_table, convert_predict_table, convert_higher_level_option } from './techresearch.js';
     document.getElementById("refresh").addEventListener('click', submit);
     document.getElementById("convert_restable").addEventListener('click', convert_result_table);
     document.getElementById("convert_predict_table").addEventListener('click', convert_predict_table);
+    document.getElementById("high_level_option").addEventListener('click', convert_higher_level_option);
 </script>
 
 <body class="container-fluid">
     <div class="title row col-12">
         <p class="h1">碧蓝航线科研规划器<br><sup>AzurLane Tech Research Helper</sup><br><a
-                href="https://github.com/Embers-of-the-Fire/AzurLane-Tech-Research-Helper"><img
-                    src="https://img.shields.io/badge/Repo-%20AzurLane--Tech--Research--Helper-success"></a>
+                href="https://github.com/Embers-of-the-Fire/AzurLane-Tech-Research-Helper"><img src="https://img.shields.io/badge/Repo-%20AzurLane--Tech--Research--Helper-success"></a>
         <div class="divider">
             <hr class="simple" />
         </div>
         </p>
     </div>
     <div class="form row col-12">
-        <div class="form-surrounder col-12 col-md-6 col-xl-3" id="rest-surrounder">
-            <h3>限制条件</h3>
+        <div class="form-surrounder col-12 col-md-12 col-xl-4" id="rest-surrounder">
+            <h3>限制条件&nbsp;&nbsp;<button id="high_level_option" class="btn btn-outline-primary">高级选项-已关闭</button></h3>
             <form id="RestrictionForm" class="needs-validation" novalidate>
                 <div class="row fsur">
                     <div class="mb-3 mt-3 col-6">
@@ -122,7 +122,7 @@
                 </div>
             </form>
         </div>
-        <div class="form-surrounder  col-12 col-md-6 col-xl-2" id="refer-surrounder">
+        <div class="form-surrounder col-12 col-md-6 col-xl-2 d-none" id="refer-surrounder">
             <h3>参考价值</h3>
             <form id="ReferenceForm" class="needs-validation" novalidate>
                 <div class="row fsur">
@@ -194,9 +194,29 @@
                 </div>
             </form>
         </div>
-        <div class="result-surrounder col-12 col-md-12 col-xl-7 row" style="max-height: 520px;">
-            <h3 style="height: 40px;">模拟结果&nbsp;&nbsp;&nbsp;<button id="refresh" class="btn btn-primary">刷新</button></h3>
-            <div class="tech-table-surrounder col-12 col-xl-4 overflow-auto" style="max-height: 480px; padding-right: 0px;">
+        <style>
+            @media (min-width: 1200px) {
+                div.tech-table-surrounder, div.result-table-surrounder, div.predict-table-surrounder {
+                    max-height: 480px;
+                    padding-right: 0px;
+                }
+                div.result-surrounder {
+                    max-height: 520px;
+                    padding-right: 0px;
+                }
+            }
+            @media (max-width: 1200px) {
+                div.tech-table-surrounder,  div.result-table-surrounder, div.predict-table-surrounder {
+                    padding-right: 0px;
+                }
+                div.result-surrounder {
+                    padding-right: 0px;
+                }
+            }
+        </style>
+        <div class="result-surrounder col-12 col-xl-8 row" style="max-height: 520px;" id="result-surrounder">
+            <h3 style="height: 40px;">模拟结果&nbsp;&nbsp;&nbsp;<button id="refresh" class="btn btn-primary">加载科研规划</button></h3>
+            <div class="tech-table-surrounder col-12 col-xl-4 overflow-auto">
                 <table class="table table-bordered table-hover">
                     <thead class="sticky-top">
                         <tr class="table-light">

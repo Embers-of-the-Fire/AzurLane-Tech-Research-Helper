@@ -5,6 +5,7 @@ const NAME_LIST = ["魔方解析1h", "魔方解析2h", "魔方解析4h", "魔方
 const TRUE_IMG = '&#10004;';
 const FALSE_IMG = '&#10006;';
 let resplan_situation = true; // true for daily and false for average
+let higher_level_option = false; // true for on and false for off
 let predict_situation = 0; // 0 for "全年产出", 1 for "科研船从零满破", 2 for "直到六期开始"
 let restriction, resplan, referenceValue;
 const END_DATE = new Date('2023/7/13  9:00:00');
@@ -205,8 +206,8 @@ function predict_situation_1() {
     let ur_time = 513 * 2;
     if (restriction.fni_5_ultra_r === 2) ur_time = 0;
     let ftime = Math.max(ssr_time, ur_time);
-    predict_table.appendChild(fill_table('金船满破', ssr_time.toFixed(2)));
-    predict_table.appendChild(fill_table('彩船满破', ur_time.toFixed(2)));
+    predict_table.appendChild(fill_table('金船满破', ssr_time.toFixed(2) + '天'));
+    predict_table.appendChild(fill_table('彩船满破', ur_time.toFixed(2) + '天'));
     predict_table.appendChild(fill_table('合计满破用时', ftime.toFixed(2) + '天'));
     predict_table.appendChild(fill_table('物资消耗', fetch_doubloon(res.doubloon * ftime)));
     predict_table.appendChild(fill_table('魔方消耗', (res.cube * ftime).toFixed(2)));
@@ -235,4 +236,42 @@ function predict_situation_2() {
 function fetch_doubloon(d) {
     if (d >= 100000) return (d / 10000).toFixed(2) + '万';
     else return d.toFixed(2);
+}
+
+export function convert_higher_level_option() {
+    higher_level_option = !higher_level_option;
+    if (higher_level_option) higher_level_option_on();
+    else higher_level_option_off();
+}
+
+function higher_level_option_on() {
+    let left = document.getElementById('rest-surrounder');
+    let mid = document.getElementById('refer-surrounder');
+    let right = document.getElementById('result-surrounder');
+    let btn = document.getElementById('high_level_option');
+    btn.innerHTML = '高级选项-已开启';
+    btn.classList.add('btn-primary');
+    btn.classList.remove('btn-outline-primary');
+    left.classList.remove('col-xl-4');
+    left.classList.add('col-xl-3');
+    left.classList.add('col-md-6');
+    mid.classList.remove('d-none');
+    right.classList.remove('col-xl-8');
+    right.classList.add('col-xl-7');
+}
+
+function higher_level_option_off() {
+    let left = document.getElementById('rest-surrounder');
+    let mid = document.getElementById('refer-surrounder');
+    let right = document.getElementById('result-surrounder');
+    let btn = document.getElementById('high_level_option');
+    btn.innerHTML = '高级选项-已关闭';
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-outline-primary');
+    left.classList.add('col-xl-4');
+    left.classList.remove('col-xl-3');
+    left.classList.remove('col-md-6');
+    mid.classList.add('d-none');
+    right.classList.add('col-xl-8');
+    right.classList.remove('col-xl-7');
 }
