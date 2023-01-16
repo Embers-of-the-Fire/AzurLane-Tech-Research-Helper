@@ -1,96 +1,7 @@
 use std::rc::Rc;
 
-use crate::{dataset, strict_check_larger, solutions::pso::pso::PsoHandler, value::{resource_value::ResourceValue, restriction::ResourceRestriction}, node::{meta::{PerformanceMode, MetaData}, rate::RateMeta, product::ProductPerDay}};
+use crate::{dataset, strict_check_larger, solutions::pso::pso::PsoHandler, value::{resource_value::ResourceValue, restriction::ResourceRestriction}, node::{meta::{PerformanceMode, MetaData}}};
 
-
-#[test]
-fn test() {
-    let mut idx = 0;
-    loop {
-        if idx > 4 {
-            break;
-        }
-        println!("{}", idx);
-        idx += 1;
-    }
-}
-
-#[test]
-fn test2() {
-    let d: [u8; 3] = [0, 1, 5];
-    let k = {
-        let mut binary_data: [bool; 15] = [false; 15];
-        for i in 0..d.len() as u8 {
-            let mut h = d[i as usize].clone();
-            let b = [
-                {
-                    if h >= 16 {
-                        h -= 16;
-                        true
-                    } else {
-                        false
-                    }
-                },
-                {
-                    if h >= 8 {
-                        h -= 8;
-                        true
-                    } else {
-                        false
-                    }
-                },
-                {
-                    if h >= 4 {
-                        h -= 4;
-                        true
-                    } else {
-                        false
-                    }
-                },
-                {
-                    if h >= 2 {
-                        h -= 2;
-                        true
-                    } else {
-                        false
-                    }
-                },
-                {
-                    if h == 1 {
-                        true
-                    } else {
-                        false
-                    }
-                },
-            ];
-            let mut idx = 0u8;
-            for d in b {
-                binary_data[(i * 5 + idx) as usize] = d;
-                idx += 1;
-            }
-        }
-        binary_data
-    };
-    println!("{:?}", k);
-    let k2 = {
-        let mut res = [0u8; 3];
-        for i in 0..(k.len() / 5) as u8 {
-            res[i as usize] = k[(i * 5) as usize] as u8 * 16
-                + k[(i * 5 + 1) as usize] as u8 * 8
-                + k[(i * 5 + 2) as usize] as u8 * 4
-                + k[(i * 5 + 3) as usize] as u8 * 2
-                + k[(i * 5 + 4) as usize] as u8 * 1;
-        }
-        res
-    };
-    println!("{:?}", k2);
-    assert_eq!(d, k2);
-}
-
-#[test]
-fn tt() {
-    println!("{}\n{}", 5.3_f64, 5.3_f64 as u8)
-}
 
 #[test]
 fn main_test() {
@@ -134,29 +45,6 @@ fn macro_test() {
     let mut otl = false;
     m += strict_check_larger!(1.0 * 2.0, s, 551.0, otl);
     println!("{}, {}", m, otl);
-}
-
-#[test]
-fn testets() {
-    println!("{}", 28.999 as u8)
-}
-
-#[test]
-fn testestset() {
-    fn vaildary(pos: [u8; 3]) -> [u8; 3] {
-        let mut res = [0u8; 3];
-        let mut k: [(u8, u8); 3] = [(0, 0); 3];
-        for i in 0..3 {
-            k[i] = (i as u8, pos[i]);
-        }
-        k.sort_by(|a, b| a.1.cmp(&b.1));
-        for i in 0..3 {
-            res[i] = k[i].0;
-        };
-        res
-    }
-    let k = [1, 2, 0];
-    println!("{:?}", vaildary(k));
 }
 
 #[test]
