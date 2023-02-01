@@ -42,7 +42,10 @@ impl ResourceRestriction {
         }
     }
 
-    pub fn new(doubloon: Strict<f64>, cube: Strict<f64>, ssr_blp: Strict<f64>, ur_blp: Strict<f64>, ur_equip: Strict<f64>, cogn_chip: Strict<f64>, time: Strict<f64>, select: u8) -> ResourceRestriction {
-        ResourceRestriction { doubloon, cube, ssr_blp, ur_blp, ur_equip, cogn_chip, time, select }
+    pub fn new(doubloon: Strict<f64>, cube: Strict<f64>, ssr_blp: Strict<f64>, ur_blp: Strict<f64>, ur_equip: Strict<f64>, cogn_chip: Strict<f64>, timei: Strict<f64>, select: u8) -> ResourceRestriction {
+        ResourceRestriction { doubloon, cube, ssr_blp, ur_blp, ur_equip, cogn_chip, time: match timei {
+            Strict::None => Strict::Loose(24.0),
+            _ => timei,
+        }, select }
     }
 }
