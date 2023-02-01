@@ -130,20 +130,6 @@ impl ActualResearches {
     }
 
     pub fn sort(&mut self) {
-        /*
-        let mut v: Vec<(f64, i8)> = Vec::new();
-        let mut k: i8 = 0;
-        for i in &self.data {
-            v.push((i.tap_income, k));
-            k += 1;
-        };
-        v.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
-        let mut fv: Vec<ActualResearch> =Vec::new();
-        for i in v {
-            fv.push(self.data[i.1 as usize])
-        }
-        self.data = fv;
-        */
         self.data.sort_by(|a, b| b.tap_income.partial_cmp(&a.tap_income).unwrap());
     }
 }

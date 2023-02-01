@@ -35,7 +35,11 @@ GitHub Page原生构建，通常情况下不会出现问题。
 
 ### 离线版本地应用
 
-开发中
+#### Tauri + HTML
+
+[Tauri App][tauriapp]
+
+[tauriapp]: https://github.com/Embers-of-the-Fire/Azurlane-techreseach-helper-tauri
 
 ## 复用及二次开发
 

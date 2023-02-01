@@ -10,3 +10,7 @@ wasm-pack.log
 test_f/
 # tests/
 
+*.bat
+
+*.db
+
