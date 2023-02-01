@@ -20,10 +20,10 @@ impl ActualRatio {
         let fres_5_ssr = 3 - f.fni_5_super_r;
         let fres_5_ur = 2 - f.fni_5_ultra_r;
         let fres_5 = fres_5_ssr + fres_5_ur;
-        let fres_f_ship = 16 - f.fni_f;
+        let fres_f_ship = 10 - f.fni_f;
         let res_5_ssr = if fres_5 == 0 { 3 } else { fres_5_ssr };
         let res_5_ur = if fres_5 == 0 { 2 } else { fres_5_ur };
-        let res_f_ship = if fres_f_ship == 0 { 16 } else { fres_f_ship };
+        let res_f_ship = if fres_f_ship == 0 { 10 } else { fres_f_ship };
         let ssr_blp_direct = res_5_ssr as f64 / 3.0;
         let ur_blp_direct = res_5_ur as f64 / 2.0;
         let all_ship = res_5_ssr + res_5_ur + res_f_ship;
