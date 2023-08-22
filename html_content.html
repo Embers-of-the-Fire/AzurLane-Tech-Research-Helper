@@ -1,0 +1,350 @@
+<div class="title row col-12">
+    <p class="h1">碧蓝航线科研规划器</p><br><sup>AzurLane Tech Research Helper</sup><br><a href="https://github.com/Embers-of-the-Fire/AzurLane-Tech-Research-Helper"><img src="https://img.shields.io/badge/Repo-%20AzurLane--Tech--Research--Helper-success"></a>
+    <div class="divider">
+        <hr class="simple" />
+    </div>
+</div>
+<div class="form row col-12">
+    <div class="form-surrounder col-12 col-md-12 col-xl-4" id="rest-surrounder">
+        <h3>限制条件&nbsp;&nbsp;<button id="high_level_option" class="btn btn-outline-primary">高级选项-已关闭</button></h3>
+        <form id="RestrictionForm" class="needs-validation" novalidate>
+            <div class="row fsur">
+                <div class="mb-3 mt-3 col-6">
+                    <div class="mb-3 mt-3">
+                        <label for="doubloon_rest" class="form-label">省物资倾向</label>
+                        <input type="number" class="form-control" id="doubloon_rest" name="doubloon_rest" value="0" step="0.01" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="cube_rest" class="form-label">省魔方倾向</label>
+                        <input type="number" class="form-control" id="cube_rest" name="cube_rest" value="110" step="0.01" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="cogn_chips_rest" class="form-label">缺心智倾向</label>
+                        <input type="number" name="cogn_chips_rest" value="0" , id="cogn_chips_rest" step="0.01" class="form-control" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="time_rest" class="form-label">当咸鱼倾向</label>
+                        <input type="number" class="form-control" value="0" id="time_rest" name="time_rest" step="0.01" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="urship_value" class="form-label"><abbr title="1彩科研船图纸=n金科研船图纸">彩船图纸价值</abbr></label>
+                        <input type="number" class="form-control" value="3" id="urship_value" name="urship_value" step="0.01" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="do_data_collection">
+                            做数据收集
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3 mt-3 col-6">
+                    <div class="mb-3 mt-3">
+                        <label for="urequip_value" class="form-label"><abbr title="1彩科研装备图纸价值=n彩科研船图纸">彩装图纸价值</abbr></label>
+                        <input type="number" class="form-control" value="20" id="urequip_value" name="urequip_value" step="0.01" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="finish_5_ssr" class="form-label">6期毕业金船数</label>
+                        <input type="number" class="form-control" id="finish_5_ssr" name="finish_5_ssr" value="3" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="finish_5_ur" class="form-label">6期毕业彩船数</label>
+                        <input type="number" class="form-control" id="finish_5_ur" name="finish_5_ur" value="2" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="finish_uship" class="form-label">345期毕业船数</label>
+                        <input type="number" class="form-control" id="finish_uship" name="finish_uship" value="11" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="limit" class="form-label"><abbr title="过滤掉排名大于N的项目">忽略项目</abbr></label>
+                        <input type="number" class="form-control" id="limit" name="limit" value="10" required>
+                        <div class="invalid-feedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="do_research_assignment">
+                            做研究委托
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-surrounder col-12 col-md-6 col-xl-2 d-none" id="refer-surrounder">
+        <h3>参考价值</h3>
+        <form id="ReferenceForm" class="needs-validation" novalidate>
+            <div class="row fsur">
+                <div class="mb-3 mt-3 col-12">
+                    <div class="row">
+                        <div class="mb-3 mt-3 col">
+                            <label for="doubloon_refer" class="form-label">物资</label>
+                            <input type="number" class="form-control" id="doubloon_refer" value="0.5" step="0.01" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                        <div class="mb-3 mt-3 col">
+                            <label for="cube_refer" class="form-label">魔方</label>
+                            <input type="number" class="form-control" name="cube_refer" value="1000" id="cube_refer" step="0.01" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 mt-3 col">
+                            <label for="time_refer" class="form-label">1H时间</label>
+                            <input type="number" class="form-control" name="time_refer" value="1500" id="time_refer" step="0.01" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                        <div class="mb-3 mt-3 col">
+                            <label for="ssr_refer" class="form-label">金图</label>
+                            <input type="number" class="form-control" name="ssr_refer" value="1200" id="ssr_refer" step="0.01" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 mt-3 col">
+                            <label for="ur_refer" class="form-label">彩图</label>
+                            <input type="number" class="form-control" name="ur_refer" value="3000" id="ur_refer" step="0.01" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                        <div class="mb-3 mt-3 col">
+                            <label for="ur_equip_refer" class="form-label">彩装</label>
+                            <input type="number" class="form-control" name="ur_equip_refer" value="36000" step="0.01" id="ur_equip_refer" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 mt-3 col">
+                            <label for="cogn_chips_refer" class="form-label">心智单元</label>
+                            <input type="number" class="form-control" name="cogn_chips_refer" value="60" step="0.01" id="cogn_chips_refer" required>
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                        <div class="mb-3 mt-3 col">
+                            <label for="start_refer" class="form-label">迭代参考值</label>
+                            <input type="number" class="form-control" id="start_refer" name="start_refer" step="0.00001" value="150">
+                            <div class="invalid-feedback"></div>
+                            <div class="valid-feedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <style>
+        @media (min-width: 1200px) {
+            div.tech-table-surrounder, div.result-table-surrounder, div.predict-table-surrounder {
+                max-height: 480px;
+                padding-right: 0px;
+            }
+            div.result-surrounder {
+                max-height: 520px;
+                padding-right: 0px;
+            }
+        }
+        @media (max-width: 1200px) {
+            div.tech-table-surrounder,  div.result-table-surrounder, div.predict-table-surrounder {
+                padding-right: 0px;
+                max-height: 70vh;
+            }
+            div.result-surrounder {
+                padding-right: 0px;
+            }
+        }
+    </style>
+    <div class="result-surrounder col-12 col-xl-8 row" style="max-height: 520px;" id="result-surrounder">
+        <h3 style="height: 40px;">模拟结果&nbsp;&nbsp;&nbsp;<button id="refresh" class="btn btn-primary">加载科研规划</button></h3>
+        <div class="tech-table-surrounder col-12 col-xl-4 overflow-auto">
+            <table class="table table-bordered table-hover">
+                <thead class="sticky-top">
+                    <tr class="table-light">
+                        <th>排名</th>
+                        <th>科研名称</th>
+                        <th>优先</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>舰装解析0.5h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>彩船定向0.5h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>金船定向0.5h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>魔方解析0.5h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>彩船定向2.5h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>资金募集4h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>舰装解析1h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>舰装解析2h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>舰装解析4h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>资金募集1.5h</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>金船定向2.5h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>彩船定向5h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>紫试验品募集2h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>资金募集2.5h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>蓝试验品募集2h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>彩船定向8h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>魔方解析1h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>金船定向5h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>金船定向8h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>魔方解析2h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>基础研究6h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>基础研究8h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>魔方解析4h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>基础研究12h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>研究委托3h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>金数据收集4h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>紫数据收集4h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>研究委托4h</td>
+                        <td>✖</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>研究委托6h</td>
+                        <td>✖</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="result-table-surrounder col-12 col-xl-4" style="max-height: 480px;">
+            <h5 style="margin-top: 10px;"><a>科研理论效益&nbsp;&nbsp;</a><button type="button" class="btn btn-outline-primary" id="convert_restable">切换显示&nbsp;<i class="fa fa-refresh"></i></button></h5>
+            <table class="table table-bordered table-hover">
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="predict-table-surrounder col-12 col-xl-4" style="max-height: 480px;">
+            <h5 style="margin-top: 10px;"><a>预计科研产出&nbsp;&nbsp;</a><button type="button" class="btn btn-outline-primary" id="convert_predict_table">切换显示&nbsp;<i class="fa fa-refresh"></i></button></h5>
+            <table class="table table-bordered table-hover">
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
