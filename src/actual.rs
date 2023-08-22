@@ -2,20 +2,16 @@ use serde::{Serialize, Deserialize};
 
 use crate::*;
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, Default)]
 pub struct ActualRatio {
-    pub super_rare_5_blp: f64,
-    pub ultra_rare_5_blp: f64,
+    pub super_rare_6_blp: f64,
+    pub ultra_rare_6_blp: f64,
     pub ssr_blp_direct: f64,
     pub ur_blp_direct: f64,
     pub refresh: f64, // '数据表'!AF34
 }
 
 impl ActualRatio {
-    pub fn new() -> ActualRatio {
-        ActualRatio { super_rare_5_blp: 0.0, ultra_rare_5_blp: 0.0, refresh: 0.0, ssr_blp_direct: 0.0, ur_blp_direct: 0.0 }
-    }
-
     pub fn from(f: &restriction::Restriction) -> ActualRatio {
         let fres_5_ssr = 3 - f.fni_5_super_r;
         let fres_5_ur = 2 - f.fni_5_ultra_r;
@@ -30,7 +26,7 @@ impl ActualRatio {
         let super_rare_5_blp = (res_5_ssr as f64) / ((res_5_ssr + res_5_ur) as f64);
         let ultra_rare_5_blp = (res_5_ur as f64) / ((res_5_ssr + res_5_ur) as f64);
         let refresh = 4.0 / (all_ship as f64) * ((res_5_ssr + res_5_ur) as f64);
-        ActualRatio { super_rare_5_blp, ultra_rare_5_blp, ssr_blp_direct, ur_blp_direct, refresh }
+        ActualRatio { super_rare_6_blp: super_rare_5_blp, ultra_rare_6_blp: ultra_rare_5_blp, ssr_blp_direct, ur_blp_direct, refresh }
     }
 }
 
@@ -85,45 +81,41 @@ impl ActualResearch {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct ActualResearches {
     pub data: Vec<ActualResearch>
 }
 
 impl ActualResearches {
-    pub fn new() -> ActualResearches {
-        ActualResearches { data: Vec::new() }
-    }
-
     pub fn from(d: &dataset::Data) -> ActualResearches {
         let mut v: Vec<ActualResearch> = Vec::new();
         for i in &d.data {
-            v.push(ActualResearch::new(i.clone()))
+            v.push(ActualResearch::new(*i))
         };
         ActualResearches { data: v }
     }
 
     pub fn generate_single_income(&mut self, r: &dataset::ReferenceValue, ar: &ActualRatio)  {
         for i in self.data.iter_mut() {
-            i.generate_single_income(&r, &ar);
+            i.generate_single_income(r, ar);
         };
     }
 
     pub fn generate_cost(&mut self, r: &dataset::ReferenceValue)  {
         for i in self.data.iter_mut() {
-            i.generate_cost(&r);
+            i.generate_cost(r);
         };
     }
 
     pub fn generate_refer(&mut self, r: &f64)  {
         for i in self.data.iter_mut() {
-            i.generate_refer(&r);
+            i.generate_refer(r);
         };
     }
 
     pub fn generate_tap(&mut self, r: &restriction::Restriction)  {
-        let ref do_data_collection = r.do_data_collection;
-        let ref do_research_assignment = r.do_research_assignment;
+        let do_data_collection = &r.do_data_collection;
+        let do_research_assignment = &r.do_research_assignment;
         for i in self.data.iter_mut() {
             i.generate_tap(do_data_collection, do_research_assignment);
         };

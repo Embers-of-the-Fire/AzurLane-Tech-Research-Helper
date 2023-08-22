@@ -1,13 +1,27 @@
 [package]
-name = "azurlane_tech_research"
-version = "0.1.0"
+name = "azurlane-tech-research"
+version = "0.3.0"
 authors = ["Embers-of-the-Fire <stellarishs@163.com>"]
 edition = "2018"
 description = "Wasm application for Azur Lane wiki(Bwiki) - Tech Research section."
 repository = "https://github.com/Embers-of-the-Fire/AzurLane-Tech-Research-Helper.git"
-license = "MIT"
+license = "MIT OR APACHE 2.0"
 readme = "README.md"
 homepage = "https://github.com/Embers-of-the-Fire/AzurLane-Tech-Research-Helper"
+includes = [
+    "src/**/*",
+    "template/**/*",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "dataset.csv",
+    "Cargo.toml",
+    "Cargo.lock"
+]
+
+[package.metadata.wasm-pack.profile.dev]
+wasm-opt = false
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -16,23 +30,29 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [dependencies]
-wasm-bindgen = "0.2.63"
+wasm-bindgen = "0.2.87"
 serde = { version = "1.0", features = ["derive"] }
-serde-wasm-bindgen = "0.4"
+serde-wasm-bindgen = "0.5.0"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
 # all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
 # code size when deploying.
-console_error_panic_hook = { version = "0.1.6", optional = true }
+console_error_panic_hook = { version = "0.1.7", optional = true }
 
 # `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
 # compared to the default allocator's ~10K. It is slower than the default
 # allocator, however.
 wee_alloc = { version = "0.4.5", optional = true }
 
+[build-dependencies]
+csv = "1.2.2"
+tera = "1.19.0"
+anyhow = "1.0.75"
+serde = { version = "1.0", features = ["derive"] }
+
 [dev-dependencies]
-wasm-bindgen-test = "0.3.13"
+wasm-bindgen-test = "0.3.37"
 
 [profile.release]
 # Tell `rustc` to optimize for small code size.

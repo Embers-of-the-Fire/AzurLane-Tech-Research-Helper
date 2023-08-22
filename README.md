@@ -68,12 +68,18 @@ npm i azurlane-tech-research
 
 #### 使用rust-Cargo（标准crate，提供全部可提供API）
 
-[azurlane_tech_research v0.1.0](https://crates.io/crates/azurlane_tech_research)
+[azurlane_tech_research v0.1.1](https://crates.io/crates/azurlane_tech_research)
 
 <sup>Add the following line to your Cargo.toml file:</sup>
 ```toml
-azurlane_tech_research = "0.1.0"
+azurlane_tech_research = "0.1.1"
 ```
+
+## 更新日志
+
+### V0.1.1
+
+更新代码库
 
 ## 许可
 
