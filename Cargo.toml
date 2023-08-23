@@ -1,6 +1,6 @@
 [package]
 name = "azurlane-tech-research"
-version = "0.3.1"
+version = "0.3.2"
 authors = ["Embers-of-the-Fire <stellarishs@163.com>"]
 edition = "2018"
 description = "Wasm application for Azur Lane wiki(Bwiki) - Tech Research section."
