@@ -33,6 +33,7 @@ fn main() -> Result<()> {
         resd.cube = record.next().unwrap().parse()?;
         resd.super_rare_blp = record.next().unwrap().parse()?;
         resd.ultra_rare_blp = record.next().unwrap().parse()?;
+        resd.ultra_rare_equip = record.next().unwrap().parse()?;
         resd.cognitive_chips = record.next().unwrap().parse()?;
         v.push(resd);
     }
